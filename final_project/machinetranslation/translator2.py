@@ -14,13 +14,13 @@ language_translator = LanguageTranslatorV3(
 
 def FrenchToEnglish(french_text):
     
-    englishtext = input('Please enter text to translate: ')    
+    french_text = input('Please enter text to translate: ')    
     language_translator.set_service_url(api_url)
     translation = language_translator.translate(
-    text = frenchtext,model_id = model_id).get_result()
-    englishtext = translation    
+    text = french_text,model_id = model_id).get_result()
+    english_text = translation    
     print(json.dumps(translation, indent=2, ensure_ascii=False)) 
-    return englishtext
+    return english_text
 
 FrenchToEnglish(english_text)
 
