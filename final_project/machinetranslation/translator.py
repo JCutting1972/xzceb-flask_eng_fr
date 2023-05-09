@@ -7,7 +7,7 @@ api_key = ('iOPVcUJiht0UA4vvWs-b1RttqQ2aFLylFb3Dxzu0gsuA')
 api_url = ('https://api.au-syd.language-translator.watson.cloud.ibm.com/instances/999bf2d6-20bf-4bff-b55a-3c47f0eae0a2')
 model_id = 'en-fr'
 english_text = 'error'
-french_text = 'error'
+#french_text = 'erro'
 
 authenticator = IAMAuthenticator(api_key)
 language_translator = LanguageTranslatorV3(
@@ -17,18 +17,19 @@ language_translator = LanguageTranslatorV3(
 def EnglishToFrench(english_text):
     
     #english_text = input('Please enter text to translate: ')    
-    
-    #language_translator.set_service_url(api_url)
+    text1 = english_text
+    language_translator.set_service_url(api_url)
     translation = language_translator.translate(
-    text = english_text,model_id = model_id).get_result()
+    text = text1,model_id = 'en-fr').get_result()
 
 
    #
    # 
    # print(json.dumps(translation, indent=2, ensure_ascii=False)) 
       
-    json_string = json.dumps(translation, indent=2, ensure_ascii=False)
-    print(json_string)
+    json_string = json.dumps(translation)#indent=2, ensure_ascii=False)
+    parsed_response = json.loads(json_string)
+    #print(json_string)
 # Get dummy data using an API
 #res = requests.get("http://dummy.restapiexample.com/api/v1/employees")
  
@@ -37,13 +38,13 @@ def EnglishToFrench(english_text):
     
    
     
-    french_text =  json_string
-    return french_text
+    french_text = parsed_response['translations'][0]['translation']
+    #return french_text
     
-   #
-   # 
-   #  return french_text
-    print (french_text)
+    return french_text
+    #print(english_text)
+    #return french_text
+    #print (french_text)
  
 # Convert dict to string
    # Dict = json.dumps(translation) 
@@ -53,11 +54,13 @@ def EnglishToFrench(english_text):
 
 
 
-    return french_text
+    #return french_text
     
     
 
 EnglishToFrench(english_text)
+
+
 
 
 
