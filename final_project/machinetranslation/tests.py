@@ -3,18 +3,20 @@ import unittest
 from translator import EnglishToFrench
 french_result= 'error'
 english_text = 'error'
-model_id = 'en-fr'
+#model_id = 'error'
+languages = 'error'
 
 
-   # french_result = EnglishToFrench('blue','en-fr')
+
 
 class TestTanslator(unittest.TestCase):
     def test_EnglishToFrench(self):
 
-    #french_result = EnlishToFrench('blue','en-fr')
+        english_text = 'Blue'
+        languages = 'en-fr'
         french_result = EnglishToFrench('blue','en-fr')
         french_expected = 'Bleu'
-        self.assertEqual(EnglishToFrench('blue','en-fr'),french_expected)
+        self.assertEqual(EnglishToFrench(english_text,languages),french_expected)
             
 
 if __name__ =='__main__':
