@@ -14,13 +14,13 @@ language_translator = LanguageTranslatorV3(
     version = '2018-05-01',
     authenticator = authenticator )
 
-def EnglishToFrench(english_text):
+def EnglishToFrench(english_text,model_id):
     
     #english_text = input('Please enter text to translate: ')    
-    text1 = english_text
+    
     language_translator.set_service_url(api_url)
     translation = language_translator.translate(
-    text = text1,model_id = 'en-fr').get_result()
+    text = english_text,model_id = 'en-fr').get_result()
 
 
    #
@@ -58,7 +58,7 @@ def EnglishToFrench(english_text):
     
     
 
-EnglishToFrench(english_text)
+EnglishToFrench(english_text,model_id)
 
 
 
