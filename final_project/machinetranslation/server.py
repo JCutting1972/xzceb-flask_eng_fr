@@ -5,31 +5,33 @@ import json
 
 app = Flask("Web Translator")
 
-@app.route("/english_to_french")
-
-def englishToFrench(english_text,languages):
-    english_text = request.args.get('Text to Translate')
+#@app.route("/english_to_french")
+@app.route('/', methods=['GET', 'POST'])
+#def eng
+#def englishToFrench(english_text,languages):
+ #   english_text = request.args.get('Text to Translate')
    #textToTranslate = request.args.get('textToTranslate')
     # Write your code here
-    return "Translated Text To French"
-    return french_text
+  #  return "Translated Text To French"
+   # return french_text
 
-@app.route("/french_txt")
-def french_to_english(french_txt,languages):
-    french_txt = request.args.get('Text To Translate')
+#@app.route("/french_txt")
+#def french_to_english(french_txt,languages):
+ #   french_txt = request.args.get('Text To Translate')
     # Write your code here
-    return "Translated Text To English"
-    return english_txt
+  #  return "Translated Text To English"
+   # return english_txt
 
-@app.route("/")
+#@app.route("/")
 def index():
     if request.method == 'POST':
-       english_text = request.form[english_text]
+       english_text = request.form['english text']
+       languages = request.form['model id']
        french_text = english_to_french(english_text,languages)
-      # return render_template(index.html)
-       return render_template('index.html')
+       return render_template('index.html', result = french_test)
+    return render_template('index.html')   
 
     # Write the code to render template
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=4191)
+    app.run(debug=True)
