@@ -9,31 +9,41 @@
     
             <label for = 'inputValue'>"Enter Input:</label>
 
-            <input type= 'text' id = 'inputValue' name= = 'inputValue'>
-            <Button type = "button" onclick = "submitForm()>Submit</button>
-           
-        </form>   
-           <div id = 'outputDiv'></div>
+            <input type = 'text' id = 'inputValue1' name = english_text>
 
-        <script>
-            function submitForm() {var english_text = document.getElementById("InputValue").value;
-                fetch('/process',) {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type: 'application/json'
+            <input type = 'text' id = 'inputValue2' name = languages>
+
+            <input type = 'text' id = 'OutputValue' name = french_text>
+
+            
+
+            <Button type = "button" onclick = submitForm()>Submit</button>
+           
+         
+           <div> id = 'outputDiv' </div>
+
+        
+            function submitForm() {var english_text = document.getElementById(inputValue1).value;
+                fetch(/process method: POST, headers: Content-Type: string)}
+
+            function submitForm() {var languages = document.getElementById(InputValue2).value; 
+                fetch(/process, { method: POST, header: Content-Type: string)}
+                
+           
+                
 
                     },
-                    body: JSON.stringify({ input: english_text})
-                }
-                .then(response =>response.json())
-                .then(data => {}
-                  var french_text = data.output);
-             document.getElementById"outputDiv").innerHTML = " Output:" + french_text;
-             
-        }) 
-             .catch(error => console.log(error)):
-     } 
+                    body: {input: english_text}
+                })
+                    .then(response =>response.string)
+                    .then(data => {
+                  var french_text = data.output;
+                  document.getElementById('outputDiv').innerHTML = 'Output:' + french_text;
+                  
+                }) 
+               .catch(error => console.log(error));
+            }     
     
-    </script>
+        </script>
 </body>
 </html>
