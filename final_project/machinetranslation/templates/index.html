@@ -1,19 +1,39 @@
 <html>
+<head>    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="./static/mywebscript.js"></script>
-    <div class="card">
-    <div class="card-body">
-        <div class="mb-3">
-            <label class="form-label">Text to be translated</label>
-            <input type="textarea" class="form-control" text= english_text>
-        </div>
+</head>
+<body>   
+           
+        <form id = 'inputForm'>
     
-        <div style="padding: 25px 25px 25px 25px;">
-            <button onclick="translateToFrench()" class="btn btn-secondary">Translate to French</button>        
-            <button onclick="translateToEnglish()" class="btn btn-secondary">Translate to English</button>        
-        </div>
+            <label for = 'inputValue'>"Enter Input:</label>
+
+            <input type= 'text' id = 'inputValue' name= = 'inputValue'>
+            <Button type = "button" onclick = "submitForm()>Submit</button>
+           
+        </form>   
+           <div id = 'outputDiv'></div>
+
+        <script>
+            function submitForm() {var english_text = document.getElementById("InputValue").value;
+                fetch('/process',) {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type: 'application/json'
+
+                    },
+                    body: JSON.stringify({ input: english_text})
+                }
+                .then(response =>response.json())
+                .then(data => {}
+                  var french_text = data.output);
+             document.getElementById"outputDiv").innerHTML = " Output:" + french_text;
+             
+        }) 
+             .catch(error => console.log(error)):
+     } 
     
-        <div id="translated_text" style="padding: 25px 25px 25px 25px;"></div>
-        </div>
-  </div>
+    </script>
+</body>
 </html>
