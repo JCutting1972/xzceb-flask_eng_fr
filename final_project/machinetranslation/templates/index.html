@@ -7,42 +7,43 @@
            
         <form id = 'inputForm'>
     
-            <label for = 'inputValue'>"Enter Input:</label>
+            <label for = 'inputValue1'>english_text:</label>
 
             <input type = 'text' id = 'inputValue1' name = english_text>
 
+            <label for = 'text' id = 'inputValue2' name = languages>
+
             <input type = 'text' id = 'inputValue2' name = languages>
 
-            <input type = 'text' id = 'OutputValue' name = french_text>
+            <label type = 'text' id = 'OutPut' name = french_text>
 
             
 
             <Button type = "button" onclick = submitForm()>Submit</button>
-           
+        </form>
          
-           <div> id = 'outputDiv' </div>
-
         
-            function submitForm() {var english_text = document.getElementById(inputValue1).value;
-                fetch(/process method: POST, headers: Content-Type: string)}
+
+        <script>
+
+            function submitForm() {var english_text = document.getElementById(inputValue1).value;}.
+                fetch('/process', {method: POST, headers: {'Content-Type': string
+            
+                body: {inputValue1, InputValue2})
 
             function submitForm() {var languages = document.getElementById(InputValue2).value; 
-                fetch(/process, { method: POST, header: Content-Type: string)}
+                fetch('/process', { method: POST, headers: {'Content-Type': string)},
+                                       
+                                    },
+                body: {input: english_text, languages}
                 
-           
-                
-
-                    },
-                    body: {input: english_text}
-                })
-                    .then(response =>response.string)
-                    .then(data => {
-                  var french_text = data.output;
-                  document.getElementById('outputDiv').innerHTML = 'Output:' + french_text;
+                .then(response =>response.string)
+                .then(data => {var french_text = data.output;
+                  document.getElementById(OutPut).innerHTML = 'Output:' + french_text;})
                   
-                }) 
-               .catch(error => console.log(error));
-            }     
+            
+               
+                 
     
         </script>
 </body>
