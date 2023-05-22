@@ -6,7 +6,7 @@ import json
 app = Flask("Web Translator")
 
 #@app.route("/english_to_french")
-@app.route('/process', methods=['POST'])
+@app.route('/process')
 #def eng
 #def englishToFrench(english_text,languages):
  #   english_text = request.args.get('Text to Translate')
@@ -24,16 +24,16 @@ app = Flask("Web Translator")
 
 #@app.route("/")
 def index():
-    if request.method == 'POST':
-       english_text = request.form['input']
-       languages = request.form['inut']
+   # if request.method == 'POST':
+    #   english_text = request.form['input']
+     #  languages = request.form['inut']
        french_text = english_to_french(english_text,languages)
-       return french_text
-       #return render_template('index.html', result = french_test)
-    return render_template('index.html')   
+       #return french_text
+       return render_template('index.html', output = french_test)
+       #return render_template('index.html')   
 
     # Write the code to render template
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 

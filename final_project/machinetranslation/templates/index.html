@@ -2,6 +2,24 @@
 <head>    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="./static/mywebscript.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('form').on('submit', function(event) {
+                $.ajax({
+                    data : {
+                        input_data : $('#input_data').val()
+                    },
+                    type : 'POST',
+                    url : '/process'
+                })
+                .done(function(data) {
+                    $('#output').text(data.output);
+                });
+                event.preventDefault();
+            });
+        });
+    </script>
 </head>
 <body>   
            
@@ -15,13 +33,15 @@
 
             <input type = 'text' id = 'inputValue2' name = languages>
 
-            <label type = 'text' id = 'OutPut' name = french_text>
-
+            
+            <h1>Output:</h1>
+            <p>{{ output }}</p> 
             
 
             <Button type = "button" onclick = submitForm()>Submit</button>
         </form>
          
+
         
 
         <script>
@@ -35,11 +55,11 @@
                 fetch('/process', { method: POST, headers: {'Content-Type': string)},
                                        
                                     },
-                body: {input: english_text, languages}
+            
                 
                 .then(response =>response.string)
-                .then(data => {var french_text = data.output;
-                  document.getElementById(OutPut).innerHTML = 'Output:' + french_text;})
+                .then(data => {var output = data.output;
+                 document.getElementById(output).innerHTML = 'Output:' + output;})
                   
             
                
