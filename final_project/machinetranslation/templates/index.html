@@ -1,70 +1,45 @@
+<!DOCTYPE html>
 <html>
 <head>    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="./static/mywebscript.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('form').on('submit', function(event) {
-                $.ajax({
-                    data : {
-                        input_data : $('#input_data').val()
-                    },
-                    type : 'POST',
-                    url : '/process'
-                })
-                .done(function(data) {
-                    $('#output').text(data.output);
-                });
-                event.preventDefault();
-            });
-        });
-    </script>
-</head>
-<body>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
            
-        <form id = 'inputForm'>
-    
-            <label for = 'inputValue1'>english_text:</label>
-
-            <input type = 'text' id = 'inputValue1' name = english_text>
-
-            <label for = 'text' id = 'inputValue2' name = languages>
-
-            <input type = 'text' id = 'inputValue2' name = languages>
-
-            
-            <h1>Output:</h1>
-            <p>{{ output }}</p> 
-            
-
-            <Button type = "button" onclick = submitForm()>Submit</button>
-        </form>
-         
-
-        
-
-        <script>
-
-            function submitForm() {var english_text = document.getElementById(inputValue1).value;}.
-                fetch('/process', {method: POST, headers: {'Content-Type': string
-            
-                body: {inputValue1, InputValue2})
-
-            function submitForm() {var languages = document.getElementById(InputValue2).value; 
-                fetch('/process', { method: POST, headers: {'Content-Type': string)},
-                                       
-                                    },
-            
-                
-                .then(response =>response.string)
-                .then(data => {var output = data.output;
-                 document.getElementById(output).innerHTML = 'Output:' + output;})
-                  
-            
                
                  
     
-        </script>
-</body>
-</html>
+</head>        
+<body>
+           
+            <input type="text" id="input1" placeholder="Input 1"><br>
+
+            
+            <input type="text" id="input2" placeholder="Input 2"><br>
+
+            <button onclick="sendData()">Send Data</buttton><br>
+           
+            <div id="result"></div>
+
+            <script>
+
+                function sendData() {
+                    var english_text = document.getElementById("input1").value;
+                    var languages = document.getElementById("inpu2").value;
+
+                    $.ajax({
+
+                        url: '/process',
+                        type: 'POST',
+                        data: JSON.stringify({input1: input1,input2: input2}),
+                        contentType: 'application/json; charset=utf-8',
+                        dataType: 'json',
+                        success: function(response) {
+                            document.getElementById("result").innerText = "Result: " +response.french_text;
+
+                        }  
+                    });
+                }
+            </script>    
+</body>        
+</html>          
