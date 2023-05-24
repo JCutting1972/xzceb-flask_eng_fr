@@ -2,44 +2,60 @@
 <html>
 <head>    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="./static/mywebscript.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    
            
                
                  
     
 </head>        
-<body>
+    <body>
            
-            <input type="text" id="input1" placeholder="Input 1"><br>
-
+          
+           
             
-            <input type="text" id="input2" placeholder="Input 2"><br>
-
-            <button onclick="sendData()">Send Data</buttton><br>
-           
-            <div id="result"></div>
 
             <script>
+                $(document).ready(function() {
+                    $('#submitBtn').click(function() { 
+                
+                        var english_text = $('#input1').val();
+                        var languages = $('#input2').val();
 
-                function sendData() {
-                    var english_text = document.getElementById("input1").value;
-                    var languages = document.getElementById("inpu2").value;
+                        var data = {
+                            'input': input1,
+                            'input2': input2
+                        };
+                    
 
-                    $.ajax({
+                        $.ajax({
 
-                        url: '/process',
-                        type: 'POST',
-                        data: JSON.stringify({input1: input1,input2: input2}),
-                        contentType: 'application/json; charset=utf-8',
-                        dataType: 'json',
-                        success: function(response) {
-                            document.getElementById("result").innerText = "Result: " +response.french_text;
+                          url: '/process',
+                          type: 'POST',
+                          data: JSON.stringify({data}),
+                          contentType: 'application/json; charset=utf-8',
+                          dataType: 'json',
+                          success: function(response) {
+                    $('#output').text(response);
 
-                        }  
+                            }  
+                        });
                     });
-                }
-            </script>    
-</body>        
-</html>          
+
+                        $('#retrieveBtn').click(function() {
+                         $ajax({
+                            type: 'GET',
+                            url: '/retrieve',
+                            success: function(response) {
+                               $('#output').text(response);
+
+                            }
+                        });
+                    });
+                });    
+            
+            </script>
+</head>                
+</html> 
+          
