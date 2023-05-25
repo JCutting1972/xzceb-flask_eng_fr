@@ -47,6 +47,8 @@
                          $ajax({
                             type: 'GET',
                             url: '/retrieve',
+                            data: JSON.stringify({data})
+                            contentType 'application/json; charset=utf-8',
                             success: function(response) {
                                $('#output').text(response);
 
@@ -56,6 +58,18 @@
                 });    
             
             </script>
-</head>                
+
+    
+
+
+</head>
+<body>
+
+    <input type="text" id="input1" placeholder="Input 1"><br>
+    <input type="text" id= "input2" placeholder="Input 2"><br>
+    <button id="submitBtn">Submit></button>
+    <div id="output">/div>
+</body>
+
 </html> 
           

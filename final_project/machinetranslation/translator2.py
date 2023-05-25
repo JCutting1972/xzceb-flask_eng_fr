@@ -19,8 +19,13 @@ def FrenchToEnglish(french_text):
     translation = language_translator.translate(
     text = french_text,model_id = model_id).get_result()
     english_text = translation    
-    print(json.dumps(translation, indent=2, ensure_ascii=False)) 
+    output=json.dumps(translation, indent=2, ensure_ascii=False)
+    #output_again = json.stringify(output)
+    
+    print(output)
     return english_text
+    
+    
 
 FrenchToEnglish(english_text)
 
