@@ -19,20 +19,20 @@ language_translator = LanguageTranslatorV3(
     version = '2018-05-01',
     authenticator = authenticator)
 
-def english_to_french(english_text='Blue',languages='en-fr'):
+def english_to_french(english_text,languages):
          
     language_translator.set_service_url(api_url)
     translation = language_translator.translate(
     text = english_text, model_id = languages).get_result()
         
-    #json_string = json.dumps(translation)
+    json_string = json.dumps(translation)
     #parsed_response = json.loads(json_string)
-    #french_text = json_string
+    french_text = json_string
     
    #french_text = (parsed_response['translations'][0]['translation'])
-
+    return french_text
     
-print(translation)   
+#print(translation)   
     #return fr
 
 def french_to_english(french_txt,languages):          

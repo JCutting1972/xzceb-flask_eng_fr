@@ -24,8 +24,8 @@
                         var languages = $('#input2').val();
 
                         var data = {
-                            'input': input1,
-                            'input2': input2
+                            'input1': english_text,
+                            'input2': languages
                         };
                     
 
@@ -47,8 +47,7 @@
                          $ajax({
                             type: 'GET',
                             url: '/retrieve',
-                            data: JSON.stringify({data})
-                            contentType 'application/json; charset=utf-8',
+                           
                             success: function(response) {
                                $('#output').text(response);
 
@@ -66,9 +65,9 @@
 <body>
 
     <input type="text" id="input1" placeholder="Input 1"><br>
-    <input type="text" id= "input2" placeholder="Input 2"><br>
+    <input type="text" id="input2" placeholder="Input 2"><br>
     <button id="submitBtn">Submit></button>
-    <div id="output">/div>
+    <div id="output"></div>
 </body>
 
 </html> 

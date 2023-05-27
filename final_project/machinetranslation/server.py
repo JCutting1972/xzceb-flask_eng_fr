@@ -1,8 +1,9 @@
-#from translator import english_to_french
+from translator import english_to_french
 #from translator import french_to_english
 from flask import Flask, render_template, request
 import json
-
+english_text = 'errror'
+languages = 'en-fr'
 #import jsonify
 #import requests
 #from ibm_watson import LanguageTranslatorV3
@@ -18,14 +19,33 @@ app = Flask("Web Translator")
 @app.route('/process', methods=['POST'])
 def processs_data():
     data = request.get_json()
+    
+    
+   # print(data)
+   # json_string = json.dumps(data)
+   # parsed_response = json.loads(data)
     english_text = data['input1']
+    
     languages = data['input2']
 
-    global french_text
 
-    french_text = english_to_french(english_text, languages)
+   #global french_text
 
-    return jsonify(result = french_text)
+
+
+english_to_french(english_text, languages)
+
+
+
+    
+    
+    
+    
+    
+    
+    
+ # return french_text
+
     
     
     
