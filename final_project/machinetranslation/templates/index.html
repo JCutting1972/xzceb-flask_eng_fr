@@ -33,28 +33,33 @@
 
                           url: '/process',
                           type: 'POST',
-                          data: JSON.stringify({data}),
-                          contentType: 'application/json; charset=utf-8',
+                          data: JSON.stringify(data),
+                          contentType: 'application/json',
                           dataType: 'json',
-                          success: function(response) {
-                    $('#output').text(response);
+                          success: function(english_to_french) {
+                              console.log(english_to_french)
+                          },
+                          error: function(error) {
+                              console.log(error);
+                          };    
+                    $('#translation').text(french_text);
 
-                            }  
+                        
                         });
-                    });
+                     });
 
-                        $('#retrieveBtn').click(function() {
+                        $('#retrieveBtn').click(function(english_to_french) {
                          $ajax({
                             type: 'GET',
-                            url: '/retrieve',
+                            url: '/process',
                            
-                            success: function(response) {
-                               $('#output').text(response);
+                            success: function(french_text) {
+                               $('#translation').text(;
 
                             }
                         });
-                    });
-                });    
+                    };
+                };    
             
             </script>
 
@@ -67,7 +72,7 @@
     <input type="text" id="input1" placeholder="Input 1"><br>
     <input type="text" id="input2" placeholder="Input 2"><br>
     <button id="submitBtn">Submit></button>
-    <div id="output"></div>
+    <div type ="text" id="translation" placeholder="Print"></div>
 </body>
 
 </html> 

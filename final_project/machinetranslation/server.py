@@ -15,19 +15,21 @@ languages = 'en-fr'
 
 app = Flask("Web Translator")
 
-#@app.route("/english_to_french")
-@app.route('/process', methods=['POST'])
+#
+@app.route("/process", methods = ['GET', 'POST'])
+
 def processs_data():
     data = request.get_json()
     
     
    # print(data)
    # json_string = json.dumps(data)
-   # parsed_response = json.loads(data)
-    english_text = data['input1']
+    parsed_data = json.loads(data)
+    english_text = parsed_data['input1']
     
-    languages = data['input2']
-
+    languages= parsed_data['input2']
+    print(languages)
+    print(english_text)
 
    #global french_text
 
@@ -65,16 +67,9 @@ english_to_french(english_text, languages)
     
 
 
-@app.route('/retrieve', methods=['GET'])
-def retrieve_data():
-    global french_text
-    if french_text is not None:
-
-        return jsonify(result = french_text)
-
-    else:
-
-        return jsonify(error = 'no data')
+#@app.route('/retrieve', methods=['GET'])
+#def retrieve_data():
+  
  #   english_text = request.args.get('Text to Translate')
    #textToTranslate = request.args.get('textToTranslate')
     # Write your code here
@@ -95,7 +90,7 @@ def index():
      # # french_text = english_to_french(english_text,languages)
        #return french_text
       #eturn render_template('index.html', output = french_test)
-       return render_template('index.html')   
+    return render_template('index.html')   
 
     # Write the code to render template
 
