@@ -11,24 +11,28 @@
     
 </head>        
     <body>
-           
-          
-           
+        <form id='inputForm'>  
+            <input type="text" id="input1" placeholder="Input 1"><br>
+            <input type="text" id="input2" placeholder="Input 2"><br>
+            <div id="translation"></div>
+            <button type="submit">SubmitBtn"</button>    
+            <button type='retrieve'>Retrieve</button>
+        </form>       
             
-
-            <script>
+        <p id="outputPlaceholder">Output Here</p>
+        <script>
                 $(document).ready(function() {
-                    $('#submitBtn').click(function() { 
-                
-                        var english_text = $('#input1').val();
-                        var languages = $('#input2').val();
+                    $("#inputForm").submit(function(e) { 
+                        e.preventDefault();
+                        var input1 = $('#input1').val();
+                        var input2 = $('#input2').val();
 
                         var data = {
-                            'input1': english_text,
-                            'input2': languages
+                            'input1': input1
+                            'input2': input2
                         };
-                    
-
+                    };
+                
                         $.ajax({
 
                           url: '/process',
@@ -36,25 +40,28 @@
                           data: JSON.stringify(data),
                           contentType: 'application/json',
                           dataType: 'json',
-                          success: function(english_to_french) {
-                              console.log(english_to_french)
-                          },
-                          error: function(error) {
-                              console.log(error);
-                          };    
-                    $('#translation').text(french_text);
-
+                         
+                    
+                    
                         
                         });
-                     });
+                });      RETRIEVE TYPE IN FORM???
 
-                        $('#retrieveBtn').click(function(english_to_french) {
-                         $ajax({
+                        INPUT FORM RETRIEVE???                 
+                        $('retrieveBtn').click(function(){}
+                         $.ajax({
                             type: 'GET',
                             url: '/process',
-                           
-                            success: function(french_text) {
-                               $('#translation').text(;
+
+                            success: function(resonse) {
+                              $('#outputPlaceholder').text(response)
+                          };  $('#output').text(response);
+                          error: function() {
+                              $('#outputPlaceholder').text('Error')
+                          } 
+
+                      
+
 
                             }
                         });
@@ -69,11 +76,8 @@
 </head>
 <body>
 
-    <input type="text" id="input1" placeholder="Input 1"><br>
-    <input type="text" id="input2" placeholder="Input 2"><br>
-    <button id="submitBtn">Submit></button>
-    <div type ="text" id="translation" placeholder="Print"></div>
-</body>
+    
+   
 
 </html> 
           
