@@ -16,47 +16,53 @@ languages = 'en-fr'
 app = Flask("Web Translator")
 
 #
-@app.route("/process", methods = ['GET', 'POST'])
-
+#@app.route("/process", methods = ['GET', 'POST'])
+@app.route("/process", methods = ['GET','POST'])
 def processs_data():
     data = request.get_json()
     
     
-   # print(data)
-   json_string = json.dumps(data)
+#    print(data)
+    
+#processs_data()
+    json_string = json.dumps(data)
     parsed_data = json.loads(json_string)
 
-    output = (parsed_response['input1'][0][''])
-    english_text = parsed_data['input1']
-    
-    languages= parsed_data['input2']
-    print(languages)
-    print(english_text)
+    output = (parsed_response['input1'][0][input1])
+    output2 = (parsed_data['input2'][0][input2])
+
+    english_text = input1
+    languages = input2
+
+english_to_french(english_text,languages)
+    #languages= parsed_data['input2']
+    #print(languages)
+    #print(english_text)
 
    #global french_text
 
 
 
     
-    return french_text
+    #return french_text
     #print(output_json)
     
     
 #print(translation)   
     #return fr
 
-def french_to_english(french_txt,languages):          
+#def french_to_english(french_txt,languages):          
 
         
-    json_string = json.dumps(translation)
+#    json_string = json.dumps(translation)
    
-    parsed_response = json.loads(json_string)
+#    parsed_response = json.loads(json_string)
    
         
 
     
 
-english_to_french(english_text, languages)
+#english_to_french(english_text, languages)
 
 
 
@@ -106,14 +112,14 @@ english_to_french(english_text, languages)
   #  return "Translated Text To English"
    # return english_txt
 
-@app.route('/')
+app.route('/')
 def index():
    # if request.method == 'POST':
     #   english_text = request.form['input']
      # # french_text = english_to_french(english_text,languages)
        #return french_text
       #eturn render_template('index.html', output = french_test)
-    return render_template('index.html')   
+###################    return render_template('index.html',translatiom)   
 
     # Write the code to render template
 

@@ -14,15 +14,13 @@
         <form id='inputForm'>  
             <input type="text" id="input1" placeholder="Input 1"><br>
             <input type="text" id="input2" placeholder="Input 2"><br>
-            <div id="translation"></div>
+            <p></p><br>
+
+            <output typ="text" id="translation" placeholder="output"><br>
             <button type="submit">SubmitBtn"</button>    
             <button type='retrieve'>Retrieve</button>
         </form>       
-        
-        <form>
-            <type= text id='translation' placeholder="Output"><br>
-
-        </form>
+       
             <script>
                 $(document).ready(function() {
                     $("#inputForm").submit(function() { 
@@ -50,16 +48,13 @@
                     $('#inputForm').retrieve(function(){
                         var french_text = $('#translation').val();
 
-                        var data_in = {'translation': french_text};
-
-
-                    
+                        var data_in = {'translation'}
+                  
                                       
                         $.ajax({
                             type: 'GET',
                             url: '/process',
-                            data: JSON(.stringify(data_in),
-                            contentType: 'appplication/json',
+                    
                             dataType: 'json'
                         });
                             
@@ -69,19 +64,17 @@
                 };      
 
                         
-                    
+                   
                 
             
             </script>
-
-    
+        </form>
+    </body>
+            
 
 
 </head>
-<body>
-
+</html>
     
-   
 
-</html> 
           
