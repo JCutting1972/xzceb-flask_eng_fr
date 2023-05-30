@@ -23,8 +23,10 @@ def processs_data():
     
     
    # print(data)
-   # json_string = json.dumps(data)
-    parsed_data = json.loads(data)
+   json_string = json.dumps(data)
+    parsed_data = json.loads(json_string)
+
+    output = (parsed_response['input1'][0][''])
     english_text = parsed_data['input1']
     
     languages= parsed_data['input2']
@@ -35,7 +37,28 @@ def processs_data():
 
 
 
+    
+    return french_text
+    #print(output_json)
+    
+    
+#print(translation)   
+    #return fr
+
+def french_to_english(french_txt,languages):          
+
+        
+    json_string = json.dumps(translation)
+   
+    parsed_response = json.loads(json_string)
+   
+        
+
+    
+
 english_to_french(english_text, languages)
+
+
 
 
 

@@ -18,20 +18,24 @@
             <button type="submit">SubmitBtn"</button>    
             <button type='retrieve'>Retrieve</button>
         </form>       
-            
-        <p id="outputPlaceholder">Output Here</p>
-        <script>
+        
+        <form>
+            <type= text id='translation' placeholder="Output"><br>
+
+        </form>
+            <script>
                 $(document).ready(function() {
-                    $("#inputForm").submit(function(e) { 
-                        e.preventDefault();
+                    $("#inputForm").submit(function() { 
+                        
+                        
                         var input1 = $('#input1').val();
                         var input2 = $('#input2').val();
 
                         var data = {
                             'input1': input1
-                            'input2': input2
-                        };
-                    };
+                            'input2': input2};
+                        
+                    
                 
                         $.ajax({
 
@@ -39,34 +43,34 @@
                           type: 'POST',
                           data: JSON.stringify(data),
                           contentType: 'application/json',
-                          dataType: 'json',
-                         
-                    
-                    
-                        
+                          dataType: 'json'
                         });
-                });      RETRIEVE TYPE IN FORM???
+                        
+                    };   
+                    $('#inputForm').retrieve(function(){
+                        var french_text = $('#translation').val();
 
-                        INPUT FORM RETRIEVE???                 
-                        $('retrieveBtn').click(function(){}
-                         $.ajax({
+                        var data_in = {'translation': french_text};
+
+
+                    
+                                      
+                        $.ajax({
                             type: 'GET',
                             url: '/process',
-
-                            success: function(resonse) {
-                              $('#outputPlaceholder').text(response)
-                          };  $('#output').text(response);
-                          error: function() {
-                              $('#outputPlaceholder').text('Error')
-                          } 
-
-                      
-
-
-                            }
+                            data: JSON(.stringify(data_in),
+                            contentType: 'appplication/json',
+                            dataType: 'json'
                         });
-                    };
-                };    
+                            
+                    };       
+                        
+
+                };      
+
+                        
+                    
+                
             
             </script>
 
