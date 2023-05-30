@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>    
+ 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -9,71 +9,25 @@
                
                  
     
-</head>        
+  <head>        
     <body>
         <form id='inputForm'>  
             <input type="text" id="input1" placeholder="Input 1"><br>
             <input type="text" id="input2" placeholder="Input 2"><br>
             <p></p><br>
 
-            <output typ="text" id="translation" placeholder="output"><br>
+            <input type="text" id="translation" placeholder="output"><br>
             <button type="submit">SubmitBtn"</button>    
             <button type='retrieve'>Retrieve</button>
         </form>       
        
-            <script>
-                $(document).ready(function() {
-                    $("#inputForm").submit(function() { 
-                        
-                        
-                        var input1 = $('#input1').val();
-                        var input2 = $('#input2').val();
-
-                        var data = {
-                            'input1': input1
-                            'input2': input2};
-                        
-                    
-                
-                        $.ajax({
-
-                          url: '/process',
-                          type: 'POST',
-                          data: JSON.stringify(data),
-                          contentType: 'application/json',
-                          dataType: 'json'
-                        });
-                        
-                    };   
-                    $('#inputForm').retrieve(function(){
-                        var french_text = $('#translation').val();
-
-                        var data_in = {'translation'}
-                  
-                                      
-                        $.ajax({
-                            type: 'GET',
-                            url: '/process',
-                    
-                            dataType: 'json'
-                        });
-                            
-                    };       
-                        
-
-                };      
-
-                        
-                   
-                
-            
-            </script>
-        </form>
+       
+        
     </body>
             
 
 
-</head>
+  </head>
 </html>
     
 

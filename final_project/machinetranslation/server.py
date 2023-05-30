@@ -1,4 +1,4 @@
-from translator import english_to_french
+#from translator import english_to_french
 #from translator import french_to_english
 from flask import Flask, render_template, request
 import json
@@ -15,26 +15,34 @@ languages = 'en-fr'
 
 app = Flask("Web Translator")
 
+
+app.route()
+def index():
+   
+    
+    
+    return render_template('index.html') 
+
 #
 #@app.route("/process", methods = ['GET', 'POST'])
-@app.route("/process", methods = ['GET','POST'])
-def processs_data():
-    data = request.get_json()
+#############@app.route("/process", methods = ['POST'])
+##########def processs_data():
+    ##########data = request.get_json()
     
     
 #    print(data)
     
 #processs_data()
-    json_string = json.dumps(data)
-    parsed_data = json.loads(json_string)
+   ###### json_string = json.dumps(data)
+    ######parsed_data = json.loads(json_string)
 
-    output = (parsed_response['input1'][0][input1])
-    output2 = (parsed_data['input2'][0][input2])
+    ##########output = (parsed_data['input1'][0][input1])
+    #########output2 = (parsed_data['input2'][0][input2])
 
-    english_text = input1
-    languages = input2
+    ###########english_text = output
+    #############languages = output2
 
-english_to_french(english_text,languages)
+##############english_to_french(english_text, languages)
     #languages= parsed_data['input2']
     #print(languages)
     #print(english_text)
@@ -112,14 +120,6 @@ english_to_french(english_text,languages)
   #  return "Translated Text To English"
    # return english_txt
 
-app.route('/')
-def index():
-   # if request.method == 'POST':
-    #   english_text = request.form['input']
-     # # french_text = english_to_french(english_text,languages)
-       #return french_text
-      #eturn render_template('index.html', output = french_test)
-###################    return render_template('index.html',translatiom)   
 
     # Write the code to render template
 
@@ -143,5 +143,5 @@ def index():
     
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
