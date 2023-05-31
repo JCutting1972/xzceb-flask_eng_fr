@@ -12,18 +12,18 @@ english_text =  'error2'
 french_text  =  'error3'
 english_txt  =  'error4'
 french_txt   =  'error5'
-translation = 't'
+translation  =  'error6'
 
 authenticator = IAMAuthenticator(api_key)
 language_translator = LanguageTranslatorV3(
     version = '2018-05-01',
     authenticator = authenticator)
 
-def english_to_french(english_text,languages):
-    
+def english_to_french(english_text):
+   #english_text = input('Enter English: ')
     language_translator.set_service_url(api_url)
     translation = language_translator.translate(
-    text = english_text, model_id = languages).get_result()
+    text = english_text, model_id = 'en-fr').get_result()
         
     json_string = json.dumps(translation)
     parsed_response = json.loads(json_string)
@@ -31,35 +31,44 @@ def english_to_french(english_text,languages):
 
     
 
-    output = (parsed_response['translations'][0]['translation'])
+    french_text = (parsed_response['translations'][0]['translation'])
     
-    output_dict = {'translation': output}
+    #output_dict = {'translation': output}
 
-    french_text = json.dumps(output_dict)
+    #french_text = json.dumps(output_dict)
     
+    
+    #print(french_text)
     return french_text
+
     #print(output_json)
     
     
 #print(translation)   
     #return fr
 
-#def french_to_english(french_txt,languages):          
+def french_to_english(french_txt):          
+    #french_txt = input('Enter French: ')
+    language_translator.set_service_url(api_url)
+    translation = language_translator.translate(
+    text = french_txt, model_id = 'fr-en').get_result()
+        
+    json_string = json.dumps(translation)
+   
+    parsed_response = json.loads(json_string)
+
+    english_txt= (parsed_response['translations'][0]['translation'])
     
-    #language_translator.set_service_url(api_url)
-    #translation = language_translator.translate(
-    #text = french_txt, model_id = languages).get_result()
-        
-    #json_string = json.dumps(translation)
+
    
-    #parsed_response = json.loads(json_string)
-   
-        
-    #return english_txt
+    #print(english_txt)    
+    return english_txt
 #english_text = 'Blue'
 #languages = 'en-fr'
 
-#english_to_french(english_text,languages)
+english_to_french(english_text)
+
+french_to_english(french_txt)
 
 
     
